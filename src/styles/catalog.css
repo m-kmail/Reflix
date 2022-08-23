@@ -1,0 +1,32 @@
+
+.cont{
+    margin-top: 20px;
+    display: grid;
+    align-self: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+}
+
+.head{
+    margin-top: 100px;
+}
+input , h3{
+    display: inline;
+}
+input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid red;
+    width: 70%;
+    margin-left: 20px;
+}
+
+.budget{
+    display: flex;
+    float: right;
+font-size: 2em;
+    margin-right: 10px;
+}

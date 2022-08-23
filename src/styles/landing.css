@@ -1,0 +1,31 @@
+
+.who{
+    text-align: center;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+.users{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: center;
+}
+
+.user{
+    width: 300px;
+    height: 100px;
+}
+
+.userName{
+    text-align: center;
+}
+
+a{
+     text-decoration: none;  
+}

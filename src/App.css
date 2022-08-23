@@ -1,5 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Dancing+Script:wght@700&display=swap');
+
 .App {
   text-align: center;
+  width: 100%;
+}
+
+.all{
+  width: 100%;
+}
+.header{
+  width: 100%;
+}
+
+body{
+  background-color: #2c3e50;
+  color: white;
+  width: 100%;;
+  font-family: 'Bad Script', cursive;
+}
+
+.btns{
+display: inline;
+position: relative;
+margin-left: 20px;
+color: white;
+text-decoration: none;
+font-size: 20px;
+}
+
+.logo{
+   display:inline;
+   position: absolute;
+   right: 0px;
+   margin: 0;
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 6vw;
 }
 
 .App-logo {
@@ -13,20 +51,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {

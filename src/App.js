@@ -1,9 +1,11 @@
 import "./App.css";
 import { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
 import Catalog from "./components/Catalog";
 import MovieDetail from "./components/MovieDetail";
+import Landing from "./components/Landing";
+import "./styles/landing.css";
+import { Link } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -56,18 +58,53 @@ class App extends Component {
             "Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so some would say, given how actively progressive she is regarding women's rights. Rumor has it that in the bonus scenes she whips out a wand and turns Gaston into a toad, but in order to watch those scenes you need to recite a certain incantation.",
         },
       ],
+      rented: [],
     };
   }
+
+  rent = (id) => {
+    let rented = [...this.state.rented];
+    let allmovies = [...this.state.moviesInfo];
+    for (let i in allmovies) {
+      if (allmovies[i].id == id) {
+        allmovies[i].isRented = true;
+        rented.push(allmovies[i]);
+        break;
+      }
+    }
+    this.setState({ rented: rented, moviesInfo: allmovies });
+  };
   render() {
     return (
       <Router>
-        <div>
-          <Route path="/" exact render={() => <Home />} />
-          <Route path="/catalog" exact render={() => <Catalog />} />
+        <div className="all">
+          <div className="header">
+            <Link to="/">
+              <h3 className="btns">go Home</h3>
+            </Link>
+            <Link to="/catalog">
+              <h3 className="btns">go catalog</h3>
+            </Link>
+            <p className="logo">REFLIX</p>
+          </div>
+          <Route path="/" exact render={() => <Landing />} />
+          <Route
+            path="/catalog"
+            exact
+            render={() => (
+              <Catalog
+                moviesInfo={this.state.moviesInfo}
+                rented={this.state.rented}
+                rent={this.rent}
+              />
+            )}
+          />
           <Route
             path="/movies/:movieID"
             exact
-            render={({ match }) => <MovieDetail match={match} />}
+            render={({ match }) => (
+              <MovieDetail match={match} allmovies={this.state.moviesInfo} />
+            )}
           />
         </div>
       </Router>

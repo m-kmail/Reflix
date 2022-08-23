@@ -1,0 +1,26 @@
+.movieIMG{
+    height: 100%;
+    width: 70%;
+    margin-left: 20px;
+    position: relative;
+}
+
+.add{
+  position: absolute;
+  z-index: 2;
+  right: 23%;
+  bottom: 0%;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: green;
+}
+
+.movie{
+    position: relative;
+}
+
+.hide{
+    display: none;
+}
