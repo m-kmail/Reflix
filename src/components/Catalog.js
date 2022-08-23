@@ -39,13 +39,15 @@ class Catalog extends Component {
           <h3 className="budget">Budget: {this.props.budget}$</h3>
         </div>
 
+        <h1>Rented movies</h1>
         <div className="rented">
-          <h2>Rented movies</h2>
           {this.props.rented.map((r) => (
             <Movie movie={r} remove={this.props.remove} />
           ))}
         </div>
 
+        <hr></hr>
+        <h1>Available Movies</h1>
         <div className="cont">
           {this.state.moviesFiltered.length
             ? this.state.moviesFiltered.map((movie) => {
