@@ -19,6 +19,11 @@ class Catalog extends Component {
       moviesFiltered: moviesInfo,
     });
   };
+
+  check(rented) {
+    if (rented == undefined) return false;
+    return rented.length > 0;
+  }
   render() {
     let movies = this.props.moviesInfo;
     return (
@@ -31,10 +36,11 @@ class Catalog extends Component {
             onChange={this.movieSearch}
           ></input>
 
-          <h3 className="budget">Budget: 10$</h3>
+          <h3 className="budget">Budget: {this.props.budget}$</h3>
         </div>
 
         <div className="rented">
+          <h2>Rented movies</h2>
           {this.props.rented.map((r) => (
             <Movie movie={r} />
           ))}

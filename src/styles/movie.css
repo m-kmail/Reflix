@@ -8,13 +8,25 @@
 .add{
   position: absolute;
   z-index: 2;
-  right: 23%;
+  right: 25%;
   bottom: 0%;
   background-color: transparent;
   border: none;
   font-size: 30px;
   font-weight: bold;
   color: green;
+}
+
+.del{
+  position: absolute;
+  z-index: 2;
+  right: 25%;
+  bottom: 0%;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
 }
 
 .movie{

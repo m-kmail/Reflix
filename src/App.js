@@ -59,6 +59,7 @@ class App extends Component {
         },
       ],
       rented: [],
+      budget: 100,
     };
   }
 
@@ -96,6 +97,7 @@ class App extends Component {
                 moviesInfo={this.state.moviesInfo}
                 rented={this.state.rented}
                 rent={this.rent}
+                budget={this.state.budget}
               />
             )}
           />
