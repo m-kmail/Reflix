@@ -42,17 +42,29 @@ class Catalog extends Component {
         <div className="rented">
           <h2>Rented movies</h2>
           {this.props.rented.map((r) => (
-            <Movie movie={r} />
+            <Movie movie={r} remove={this.props.remove} />
           ))}
         </div>
 
         <div className="cont">
           {this.state.moviesFiltered.length
             ? this.state.moviesFiltered.map((movie) => {
-                return <Movie movie={movie} rent={this.props.rent} />;
+                return (
+                  <Movie
+                    movie={movie}
+                    rent={this.props.rent}
+                    remove={this.props.remove}
+                  />
+                );
               })
             : this.props.moviesInfo.map((movie) => {
-                return <Movie movie={movie} rent={this.props.rent} />;
+                return (
+                  <Movie
+                    movie={movie}
+                    rent={this.props.rent}
+                    remove={this.props.remove}
+                  />
+                );
               })}
         </div>
       </div>

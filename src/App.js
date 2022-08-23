@@ -16,6 +16,7 @@ class App extends Component {
           id: 0,
           isRented: false,
           title: "Tarzan",
+          price: 30,
           year: 1999,
           img: "https://vignette.wikia.nocookie.net/disney-fan-fiction/images/4/42/Tarzan_2004_cover.jpg/revision/latest?cb=20140331030811",
           descrShort:
@@ -24,6 +25,7 @@ class App extends Component {
         {
           id: 1,
           isRented: false,
+          price: 20,
           title: "The Lion King",
           img: "https://img00.deviantart.net/b782/i/2006/207/e/7/the_lion_king_front_cd_cover_by_peachpocket285.jpg",
           year: 1994,
@@ -33,6 +35,7 @@ class App extends Component {
         {
           id: 2,
           isRented: false,
+          price: 50,
           title: "Beauty and the Beast",
           year: 1991,
           img: "https://images-na.ssl-images-amazon.com/images/I/81etFyb9N-L._SL1500_.jpg",
@@ -44,6 +47,7 @@ class App extends Component {
           isRented: false,
           title: "The Sword in the Stone",
           year: 1963,
+          price: 15,
           img: "https://www.disneyinfo.nl/images/laserdiscs/229-1-AS-front.jpg",
           descrShort:
             "Arthur is a young boy who just wants to be a knight's squire. Alas, he is dubbed 'Wart' early on, and it was all downhill from there for a while. On a hunting trip he falls in on Merlin, literally. Merlin is a possibly-mentally-unstable-and-ethically-dubious Wizard that turns Arthur into a literate, at-one-point harassed squirrel. Watch to find out what the heck that means.",
@@ -53,6 +57,7 @@ class App extends Component {
           isRented: false,
           title: "Beauty and the Beast",
           year: 2016,
+          price: 5,
           img: "https://images-na.ssl-images-amazon.com/images/I/51ArFYSFGJL.jpg",
           descrShort:
             "Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so some would say, given how actively progressive she is regarding women's rights. Rumor has it that in the bonus scenes she whips out a wand and turns Gaston into a toad, but in order to watch those scenes you need to recite a certain incantation.",
@@ -66,14 +71,45 @@ class App extends Component {
   rent = (id) => {
     let rented = [...this.state.rented];
     let allmovies = [...this.state.moviesInfo];
+    let cur = this.state.budget;
+    let ok = false;
     for (let i in allmovies) {
       if (allmovies[i].id == id) {
-        allmovies[i].isRented = true;
-        rented.push(allmovies[i]);
+        if (allmovies[i].price > cur) {
+          alert("you dont have enough money");
+        } else {
+          ok = true;
+          allmovies[i].isRented = true;
+          rented.push(allmovies[i]);
+          cur -= allmovies[i].price;
+        }
         break;
       }
     }
-    this.setState({ rented: rented, moviesInfo: allmovies });
+    if (ok)
+      this.setState({ rented: rented, moviesInfo: allmovies, budget: cur });
+  };
+  remove = (id) => {
+    let rented = [...this.state.rented];
+    let allmovies = [...this.state.moviesInfo];
+    let cur = this.state.budget;
+    let index = 0;
+    for (let i in rented) {
+      if (rented[i].id == id) {
+        index = i;
+        break;
+      }
+    }
+    cur += rented[index].price;
+    rented.splice(index, 1);
+
+    for (let i in allmovies) {
+      if (allmovies[i].id == id) {
+        allmovies[i].isRented = false;
+        break;
+      }
+    }
+    this.setState({ rented: rented, moviesInfo: allmovies, budget: cur });
   };
   render() {
     return (
@@ -97,6 +133,7 @@ class App extends Component {
                 moviesInfo={this.state.moviesInfo}
                 rented={this.state.rented}
                 rent={this.rent}
+                remove={this.remove}
                 budget={this.state.budget}
               />
             )}

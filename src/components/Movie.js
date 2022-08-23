@@ -5,6 +5,9 @@ class Movie extends Component {
   rent = () => {
     this.props.rent(this.props.movie.id);
   };
+  remove = () => {
+    this.props.remove(this.props.movie.id);
+  };
   render() {
     let id = this.props.movie.id;
     let str = "/movies/" + id;
@@ -14,7 +17,7 @@ class Movie extends Component {
           <img src={this.props.movie.img} className="movieIMG" />
         </Link>
         {this.props.movie.isRented ? (
-          <button className="del" onClick={this.tst}>
+          <button className="del" onClick={this.remove}>
             <i class="fa fa-minus" aria-hidden="true"></i>
           </button>
         ) : (
